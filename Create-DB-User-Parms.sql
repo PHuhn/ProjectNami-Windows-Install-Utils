@@ -14,6 +14,8 @@
 --   * grant the 'site user' account owner/read/write permissions to the
 --     database. 
 -- ===========================================================================
+-- 2017-09-21  Phil  Updated the closing message
+-- ===========================================================================
 USE master;
 DECLARE
 	@dbName	VARCHAR(50) = '$(dbName)',	-- database name
@@ -82,11 +84,15 @@ SET @sql4 = N'
 PRINT @sql4
 EXEC (@sql4);
 
-PRINT ''
-PRINT '!*!*  If the is for WordPress, paste the following into the wp-config.php  *!*!'
+PRINT '
+!*!*  If this is for WordPress...
+!*!*   1) R-click server instance => Properties => Security => 
+!*!*      turn on "SQL Server and Windows Authentication mode". 
+!*!*   2) paste the following into the wp-config.php '
+
 PRINT '
 
-// ** SQL Server settings - You can get this info from your web host ** //
+// ** SQL Server settings ** //
 define(''DB_NAME'', ''' + @dbName + ''');  /** The name of the database */
 define(''DB_USER'', ''' + @uName + ''');  /** SQL database username */
 define(''DB_PASSWORD'', ''' + @uPwd + '''); /** SQL database password */
