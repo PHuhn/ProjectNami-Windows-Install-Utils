@@ -39,3 +39,13 @@ Some support utilities for project nami (clone of WordPress for Windows and SQL 
 ```
 		Set-ExecutionPolicy  -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
+
+## web.config
+	An IIS website configuration files, similar to htaccess file.
+	In the security section of the web.config
+	1) Denial of service attack prevention,
+	2) Do not allow requests for specific sequences and file extensions.
+	In the Rewrite section enable 'Permalink Setting', rewrite the URL line.
+
+
+
