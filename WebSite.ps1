@@ -69,6 +69,7 @@ Import-Module "WebAdministration"
 #  1.2.0	refactored create-WebSite
 #  2.0.0	converted to command line
 #  2.0.1	corrected typos and changed help
+#  2.0.2	corrected baseDir trailing slash
 # ============================================================================
 ### functions section ###
 ##
@@ -152,6 +153,8 @@ function create-WebSite ( [string]$baseDir, [string]$siteName, [string]$portNum,
   if( ( $wordPress -eq "" ) -or ( $wordPress -like "true" ) -or ( $wordPress -eq "1" ) )  { $wp = 1 }
   # name of site/folder name and appPool name
   if( $siteName -eq "" )  { $siteName = if( $wp ) {"WPress"} else { "WebSite" } }
+  # fix baseDir
+  if( $baseDir.substring($baseDir.Length-1,1) -ne "\" ) { $baseDir = ("{0}\" -f $baseDir ) }
   #
   create-WebSite $baseDir $siteName $portNum $siteUser $owner $wp
   #
